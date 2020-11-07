@@ -113,9 +113,11 @@ class Matcher():
         self.locationsB = []
 
         self.initial_matches = self.get_initial_matches()
-        # print(self.initial_matches)
+        print("Initial Matches")
+        print(self.initial_matches)
         self.healed_matches = self.heal_neighboring_matches()
-        # print(self.healed_matches)
+        print("Healed Matches")
+        print(self.healed_matches)
 
         
         self.extended_matches = self.extend_matches()
@@ -216,8 +218,9 @@ class Matcher():
                 continue
             else:
                 # Overlappting Matches --> Merging into a single paragraph 
-                if ( nextMatch.a - (match.a + match.size) ) < minDistance:
-                    # logging.debug('Potential healing candidate found: ' % (match, nextMatch))
+                if ( nextMatch.a - (match.a + match.size) ) < minDistance and ( nextMatch.b - (match.b + match.size) ) < minDistance:
+                    # print('Potential healing candidate found: ' % (match, nextMatch))
+                    print(nextMatch,match)
                     sizeA = (nextMatch.a + nextMatch.size) - match.a
                     sizeB = (nextMatch.b + nextMatch.size) - match.b
                     healed = ExtendedMatch(match.a, match.b, sizeA, sizeB)

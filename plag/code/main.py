@@ -52,7 +52,7 @@ def searchWeb(text,output,c):
         "x-rapidapi-host" :"google-search3.p.rapidapi.com"
     }
     query = {
-        "q": text,
+        "q": text+' Agile',
         "num": 5,
         "lr":"lang_en"
     }
@@ -96,8 +96,8 @@ def process(data):
     c = {}
     i=1
     count = len(q)
-    if count>5:
-        count=5
+    if count>30:
+        count=30
     # f = open("sampleOut.txt","w")
 
     for s in q[:count]:
